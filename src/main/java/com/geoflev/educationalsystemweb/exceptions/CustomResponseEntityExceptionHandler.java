@@ -30,5 +30,11 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity<>(courseCodeExceptionResponse,HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleAssignmentException(AssignmentCodeException ex, WebRequest request){
+        AssignmentCodeExceptionResponse assignmentCodeExceptionResponse = new AssignmentCodeExceptionResponse(ex.getMessage());
+        return new ResponseEntity<>(assignmentCodeExceptionResponse,HttpStatus.BAD_REQUEST);
+    }
+
 
 }

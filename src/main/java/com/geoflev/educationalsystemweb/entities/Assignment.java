@@ -14,9 +14,10 @@ public class Assignment {
     private String assignmentCode;
     @Lob
     private byte[] fileData;
-    @NotBlank(message = "Course code is required")
     private LocalDateTime dateTimePosted;
+    @NotBlank(message = "Assignment description is required")
     private String description;
+    @NotBlank(message = "Assignment's course code is required")
     private String courseCode;
 
     public Assignment() {
@@ -31,6 +32,11 @@ public class Assignment {
         this.courseCode = courseCode;
     }
 
+
+    @PrePersist
+    protected void onCreate(){
+        this.dateTimePosted = LocalDateTime.now();
+    }
 
     public Long getAssignmentId() {
         return assignmentId;

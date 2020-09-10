@@ -12,5 +12,5 @@ public interface StudentRepository extends CrudRepository<Student, Long> {
     @Override
     Iterable<Student> findAll();
 
-    
+
 }

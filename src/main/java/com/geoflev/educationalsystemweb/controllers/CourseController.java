@@ -22,7 +22,7 @@ public class CourseController {
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewCourse(@Valid @RequestBody Course course, BindingResult result){
+    public ResponseEntity<?> createNewCourse(@Valid Course course, BindingResult result){
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if( errorMap != null ){

@@ -1,6 +1,6 @@
 package com.geoflev.educationalsystemweb.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -29,7 +29,7 @@ public class Student {
     @ElementCollection
     private List<String> interests =  new ArrayList<>();
     @Past
-    @JsonFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date birthDate;
     private String home;
     @Lob

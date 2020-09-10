@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="application/json">
+    <title>Create/Update Course</title>
+</head>
+<body>
+<div id="mainContent" class="col-12">
+    <hr>
+    <h1 id="formTitle" class="display-5 text-center mt-4">
+        Create a new Course
+    </h1>
+    <hr>
+    <form id="assignmentForm" name="assignmentForm" action="/assignment/create" method="post" enctype="a">
+        <div class="form-group border rounded p-3">
+
+            <label for="assignmentCode">Assignment Code</label>
+            <input  type="text" class="form-control mt-2" id="assignmentCode"
+                    placeholder="Assignment Code" name="assignmentCode"  maxlength="50" >
+
+            <label class="mt-2" for="fileData">File</label>
+            <input  type="number" class="form-control mt-2" id="fileData"
+                    placeholder="File" name="fileData" minlength="1" maxlength="50" >
+
+            <label class="mt-2" for="dateTimePosted">DateTime Posted</label>
+            <input  type="datetime-local" class="form-control mt-2" id="dateTimePosted"
+                    placeholder="DateTime Posted" name="dateTimePosted" disabled>
+
+            <label class="mt-2" for="description">Description</label>
+            <input  type="text" class="form-control mt-2" id="description"
+                    placeholder="Description" name="description" min="1" >
+
+            <label for="courseCode">Course Code</label>
+            <input  type="text" class="form-control mt-2" id="courseCode"
+                    placeholder="Course Code" name="courseCode"  maxlength="50" >
+        </div>
+    </form>
+    <div class="text-center">
+        <button type="submit" value="Submit" class="btn" form="assignmentForm">Create Assignment</button>
+    </div>
+</div>
+</body>
+</html>

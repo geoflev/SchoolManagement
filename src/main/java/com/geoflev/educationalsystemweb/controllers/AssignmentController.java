@@ -22,7 +22,7 @@ public class AssignmentController {
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewAssignment(@Valid @RequestBody Assignment assignment, BindingResult result){
+    public ResponseEntity<?> createNewAssignment(@Valid Assignment assignment, BindingResult result){
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if(errorMap != null){

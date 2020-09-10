@@ -22,7 +22,7 @@ public class TeacherController {
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewTeacher(@Valid @RequestBody Teacher teacher, BindingResult result){
+    public ResponseEntity<?> createNewTeacher(@Valid Teacher teacher, BindingResult result){
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if(errorMap != null){

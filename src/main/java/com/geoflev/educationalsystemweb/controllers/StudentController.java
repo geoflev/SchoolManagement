@@ -1,9 +1,13 @@
 package com.geoflev.educationalsystemweb.controllers;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.geoflev.educationalsystemweb.entities.Student;
 import com.geoflev.educationalsystemweb.services.MapValidationErrorService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +16,7 @@ import com.geoflev.educationalsystemweb.services.StudentService;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping(value = "/student")
 public class StudentController {
 
     @Autowired
@@ -21,8 +25,10 @@ public class StudentController {
     @Autowired
     private MapValidationErrorService mapValidationErrorService;
 
-    @PostMapping("/create")
-    public ResponseEntity<?> createNewStudent(@Valid @RequestBody Student student, BindingResult result){
+    private static Logger log = LoggerFactory.getLogger(StudentController.class);
+
+    @PostMapping(value = "/create")
+    public ResponseEntity<?> createNewStudent(@Valid Student student, BindingResult result){
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if(errorMap != null){

@@ -38,6 +38,11 @@ public class Assignment {
         this.dateTimePosted = LocalDateTime.now();
     }
 
+    @PreUpdate
+    protected void onUpdate(){
+        this.dateTimePosted = LocalDateTime.now();
+    }
+
     public Long getAssignmentId() {
         return assignmentId;
     }

@@ -1,6 +1,5 @@
 package com.geoflev.educationalsystemweb.repositories;
 
-import com.geoflev.educationalsystemweb.entities.Student;
 import com.geoflev.educationalsystemweb.entities.Teacher;
 import org.springframework.data.repository.CrudRepository;
 

@@ -15,13 +15,19 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
     @ExceptionHandler
     public final ResponseEntity<Object> handleStudentIdException(StudentUsernameException ex, WebRequest request){
         StudentUsernameExceptionResponse studentIdExceptionResponse = new StudentUsernameExceptionResponse(ex.getMessage());
-        return new ResponseEntity(studentIdExceptionResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(studentIdExceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
     public final ResponseEntity<Object> handleTeacherException(TeacherUsernameException ex, WebRequest request){
         TeacherUsernameExceptionResponse teacherUsernameExceptionResponse = new TeacherUsernameExceptionResponse(ex.getMessage());
         return new ResponseEntity<>(teacherUsernameExceptionResponse,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleCourseException(CourseCodeException ex, WebRequest request){
+        CourseCodeExceptionResponse courseCodeExceptionResponse = new CourseCodeExceptionResponse(ex.getMessage());
+        return new ResponseEntity<>(courseCodeExceptionResponse,HttpStatus.BAD_REQUEST);
     }
 
 

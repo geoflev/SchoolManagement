@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,6 +12,10 @@
     <h1>Welcome to School!</h1>
     <br>
     <br>
+    <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" />
+    </form>
     <br>
     <button onclick="window.location.href='/studentsList.html'">Students</button><br>
     <button onclick="window.location.href='/teachersList.html'">Teachers</button><br>

@@ -1,6 +1,7 @@
 package com.geoflev.educationalsystemweb.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -8,6 +9,7 @@ import javax.validation.constraints.Past;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -51,6 +53,7 @@ public class Student {
         this.home = home;
         this.profilePicture = profilePicture;
     }
+
 
     public Long getStudentId() {
         return studentId;

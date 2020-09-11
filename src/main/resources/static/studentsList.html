@@ -23,6 +23,7 @@
         <th>Birth Date</th>
         <th>Home</th>
         <th>Profile Picture</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -42,7 +43,7 @@
         $.ajax({
             type: 'GET',
             url: 'http://localhost:8080/student/all',
-            data: $('#cityDetails').serialize(),
+            data: $('#details').serialize(),
             dataType:"json", //to parse string into JSON object,
             success: function(data){
                 if(data){
@@ -61,6 +62,7 @@
                                             "<td>"+data[i].birthDate+"</td>" +
                                             "<td>"+data[i].home+"</td>" +
                                             "<td>"+data[i].profilePicture+"</td>" +
+                                            "<td><button id='delete''>Delete</button></td>" +
                                         "</tr>";
                             }
                         }
@@ -75,5 +77,15 @@
             }
         });
         return false;//suppress natural form submission
+    });
+</script>
+<script>
+    $('#delete').click(function(){
+        $.ajax({
+            url: 'http://localhost:8080/student/'+ data[i].username,
+            type: 'DELETE',
+            contentType:'application/json',
+            dataType: 'text',
+        });
     });
 </script>

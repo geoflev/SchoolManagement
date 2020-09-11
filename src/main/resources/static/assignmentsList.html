@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignments</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+</head>
+<body>
+<table id="assignmentTable" class="display">
+    <thead>
+    <tr>
+        <th>Assignment Code</th>
+        <th>File</th>
+        <th>Last updated</th>
+        <th>Description</th>
+        <th>Course Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<br>
+<button onclick="window.location.href='/createAssignment.html'">Create Assignment</button>
+</body>
+</html>
+<script>
+    $(document).ready( function () {
+        $('#assignmentTable').DataTable();
+    } );
+</script>
+<script>
+    $(document).ready( function () {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/assignment/all',
+            data: $('#cityDetails').serialize(),
+            dataType:"json", //to parse string into JSON object,
+            success: function(data){
+                if(data){
+                    var len = data.length;
+                    var txt = "";
+                    if(len > 0){
+                        for(var i=0;i<len;i++){
+                            if(data[i].assignmentCode){
+                                txt += "<tr>" +
+                                    "<td>"+data[i].assignmentCode+"</td>" +
+                                    "<td>"+data[i].fileData+"</td>" +
+                                    "<td>"+ data[i].dateTimePosted+"</td>" +
+                                    "<td>"+data[i].description+"</td>" +
+                                    "<td>"+data[i].courseCode+"</td>" +
+                                    "</tr>";
+                            }
+                        }
+                        if(txt != ""){
+                            $("#assignmentTable").append(txt).removeClass("hidden");
+                        }
+                    }
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                alert('error: ' + textStatus + ': ' + errorThrown);
+            }
+        });
+        return false;//suppress natural form submission
+    });
+</script>

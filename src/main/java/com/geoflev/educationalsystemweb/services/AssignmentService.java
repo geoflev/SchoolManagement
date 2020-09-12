@@ -12,25 +12,25 @@ public class AssignmentService {
     @Autowired
     private AssignmentRepository assignmentRepository;
 
-    public Assignment saveOrUpdateAssignment(Assignment assignment){
+    public Assignment saveOrUpdateAssignment(Assignment assignment) {
         return assignmentRepository.save(assignment);
     }
 
-    public Assignment findByCode(String code){
+    public Assignment findByCode(String code) {
         Assignment assignment = assignmentRepository.findAssignmentByAssignmentCode(code);
-        if(assignment == null){
-            throw new AssignmentCodeException("Assignment with code: '" +  code + "' doesnt exist");
+        if (assignment == null) {
+            throw new AssignmentCodeException("Assignment with code: '" + code + "' doesnt exist");
         }
         return assignment;
     }
 
-    public Iterable<Assignment> findAllAssignments(){
+    public Iterable<Assignment> findAllAssignments() {
         return assignmentRepository.findAll();
     }
 
-    public void deleteAssignmentByCode(String code){
+    public void deleteAssignmentByCode(String code) {
         Assignment assignment = assignmentRepository.findAssignmentByAssignmentCode(code);
-        if(assignment == null){
+        if (assignment == null) {
             throw new AssignmentCodeException("Assignment not found!");
         }
         assignmentRepository.delete(assignment);

@@ -4,15 +4,15 @@ public class CourseCodeExceptionResponse {
 
     private String code;
 
-    public CourseCodeExceptionResponse(String username){
+    public CourseCodeExceptionResponse(String username) {
         this.code = code;
     }
 
-    public String getCourseCode(){
+    public String getCourseCode() {
         return code;
     }
 
-    public void setCourseCode(String code){
+    public void setCourseCode(String code) {
         this.code = code;
     }
 }

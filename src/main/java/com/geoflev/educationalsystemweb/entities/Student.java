@@ -29,7 +29,7 @@ public class Student {
     @NotBlank(message = "Role is required")
     private String role;
     @ElementCollection
-    private List<String> interests =  new ArrayList<>();
+    private List<String> interests = new ArrayList<>();
     @Past
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date birthDate;

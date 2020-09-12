@@ -4,15 +4,15 @@ public class AssignmentCodeExceptionResponse {
 
     private String courseCode;
 
-    public AssignmentCodeExceptionResponse(String courseCode){
+    public AssignmentCodeExceptionResponse(String courseCode) {
         this.courseCode = courseCode;
     }
 
-    public String getAssignmentCode(){
+    public String getAssignmentCode() {
         return courseCode;
     }
 
-    public void setAssignmentCode(String courseCode){
+    public void setAssignmentCode(String courseCode) {
         this.courseCode = courseCode;
     }
 }

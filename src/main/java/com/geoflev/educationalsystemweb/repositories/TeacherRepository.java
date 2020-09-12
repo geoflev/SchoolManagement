@@ -3,7 +3,7 @@ package com.geoflev.educationalsystemweb.repositories;
 import com.geoflev.educationalsystemweb.entities.Teacher;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TeacherRepository extends CrudRepository<Teacher,Long> {
+public interface TeacherRepository extends CrudRepository<Teacher, Long> {
 
     Teacher findByTeacherId(Long teacherId);
 

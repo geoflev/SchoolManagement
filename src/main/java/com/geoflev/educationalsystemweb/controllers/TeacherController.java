@@ -22,10 +22,10 @@ public class TeacherController {
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewTeacher(@Valid Teacher teacher, BindingResult result){
+    public ResponseEntity<?> createNewTeacher(@Valid Teacher teacher, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if(errorMap != null){
+        if (errorMap != null) {
             return errorMap;
         }
         Teacher newTeacher = teacherService.saveOrUpdateTeacher(teacher);
@@ -33,34 +33,21 @@ public class TeacherController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<?> getTeacherByUsername(@PathVariable String username){
+    public ResponseEntity<?> getTeacherByUsername(@PathVariable String username) {
         Teacher teacher = teacherService.findByUsername(username);
         return new ResponseEntity<Teacher>(teacher, HttpStatus.OK);
     }
 
     @GetMapping("/all")
-    public Iterable<Teacher> getAllTeachers(){
+    public Iterable<Teacher> getAllTeachers() {
         return teacherService.findAllTeachers();
     }
 
     @DeleteMapping("/{username}")
-    public ResponseEntity<?> deleteTeacherByUsername(@PathVariable  String username){
+    public ResponseEntity<?> deleteTeacherByUsername(@PathVariable String username) {
         teacherService.deleteByUsername(username);
-        return new ResponseEntity<String>("Teacher with username: '" + username + "' was successfully deleted",HttpStatus.OK);
+        return new ResponseEntity<String>("Teacher with username: '" + username + "' was successfully deleted", HttpStatus.OK);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

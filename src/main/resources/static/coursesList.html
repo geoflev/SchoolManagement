@@ -6,7 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
 </head>
 <body>
@@ -16,7 +17,6 @@
         <th>Course Code</th>
         <th>Course Name</th>
         <th>Description</th>
-        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -27,42 +27,17 @@
 </body>
 </html>
 <script>
-    $(document).ready( function () {
-        $('#courseTable').DataTable();
-    } );
-</script>
-<script>
-    $(document).ready( function () {
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:8080/course/all',
-            data: $('#cityDetails').serialize(),
-            dataType:"json", //to parse string into JSON object,
-            success: function(data){
-                if(data){
-                    var len = data.length;
-                    var txt = "";
-                    if(len > 0){
-                        for(var i=0;i<len;i++){
-                            if(data[i].courseCode && data[i].name){
-                                txt += "<tr>" +
-                                    "<td>"+data[i].courseCode+"</td>" +
-                                    "<td>"+data[i].name+"</td>" +
-                                    "<td>"+data[i].description+"</td>" +
-                                    "<td><button id='delete''>Delete</button></td>" +
-                                    "</tr>";
-                            }
-                        }
-                        if(txt != ""){
-                            $("#courseTable").append(txt).removeClass("hidden");
-                        }
-                    }
-                }
+    $(document).ready(function () {
+        $('#courseTable').DataTable({
+            "ajax": {
+                "url": "http://localhost:8080/course/all",
+                "dataSrc": ""
             },
-            error: function(jqXHR, textStatus, errorThrown){
-                alert('error: ' + textStatus + ': ' + errorThrown);
-            }
+            "columns": [
+                {"data": "courseCode"},
+                {"data": "name"},
+                {"data": "description"},
+            ]
         });
-        return false;//suppress natural form submission
     });
 </script>

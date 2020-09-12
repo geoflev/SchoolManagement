@@ -22,10 +22,10 @@ public class CourseController {
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewCourse(@Valid Course course, BindingResult result){
+    public ResponseEntity<?> createNewCourse(@Valid Course course, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if( errorMap != null ){
+        if (errorMap != null) {
             return errorMap;
         }
 
@@ -34,35 +34,21 @@ public class CourseController {
     }
 
     @GetMapping("/{courseCode}")
-    public ResponseEntity<?> getCourseByCode(@PathVariable String courseCode){
+    public ResponseEntity<?> getCourseByCode(@PathVariable String courseCode) {
         Course course = courseService.findByCode(courseCode);
-        return new ResponseEntity<Course>(course,HttpStatus.OK);
+        return new ResponseEntity<Course>(course, HttpStatus.OK);
     }
 
     @GetMapping("/all")
-    public Iterable<Course> getAllCourses(){
+    public Iterable<Course> getAllCourses() {
         return courseService.findAllCourses();
     }
 
     @DeleteMapping("/{courseCode}")
-    public ResponseEntity<?> deleteCourseByCode(@PathVariable String courseCode){
+    public ResponseEntity<?> deleteCourseByCode(@PathVariable String courseCode) {
         courseService.deleteCourseByCode(courseCode);
-        return new ResponseEntity<String>("Course with code: " + courseCode + " deleted successfully",HttpStatus.OK);
+        return new ResponseEntity<String>("Course with code: " + courseCode + " deleted successfully", HttpStatus.OK);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -4,15 +4,15 @@ public class StudentUsernameExceptionResponse {
 
     private String username;
 
-    public StudentUsernameExceptionResponse(String username){
+    public StudentUsernameExceptionResponse(String username) {
         this.username = username;
     }
 
-    public String getStudentUsername(){
+    public String getStudentUsername() {
         return username;
     }
 
-    public void setStudentUsername(String username){
+    public void setStudentUsername(String username) {
         this.username = username;
     }
 }

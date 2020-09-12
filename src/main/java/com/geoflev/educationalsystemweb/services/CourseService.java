@@ -12,25 +12,25 @@ public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public Course saveOrUpdateCourse(Course course){
+    public Course saveOrUpdateCourse(Course course) {
         return courseRepository.save(course);
     }
 
-    public Course findByCode(String code){
+    public Course findByCode(String code) {
         Course course = courseRepository.findCourseByCourseCode(code);
-        if(course == null){
+        if (course == null) {
             throw new CourseCodeException("Course with code: '" + code + "' doesnt exist");
         }
         return course;
     }
 
-    public Iterable<Course> findAllCourses(){
+    public Iterable<Course> findAllCourses() {
         return courseRepository.findAll();
     }
 
-    public void deleteCourseByCode(String code){
+    public void deleteCourseByCode(String code) {
         Course course = courseRepository.findCourseByCourseCode(code);
-        if(course == null){
+        if (course == null) {
             throw new CourseCodeException("Course not found");
         }
         courseRepository.delete(course);

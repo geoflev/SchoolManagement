@@ -12,25 +12,25 @@ public class TeacherService {
     @Autowired
     private TeacherRepository teacherRepository;
 
-    public Teacher saveOrUpdateTeacher(Teacher teacher){
+    public Teacher saveOrUpdateTeacher(Teacher teacher) {
         return teacherRepository.save(teacher);
     }
 
-    public Teacher findByUsername(String username){
+    public Teacher findByUsername(String username) {
         Teacher teacher = teacherRepository.findTeacherByUsername(username);
-        if(teacher == null){
+        if (teacher == null) {
             throw new TeacherUsernameException("Teacher with username '" + username + "' doesnt exist");
         }
         return teacher;
     }
 
-    public Iterable<Teacher> findAllTeachers(){
+    public Iterable<Teacher> findAllTeachers() {
         return teacherRepository.findAll();
     }
 
-    public void deleteByUsername(String username){
+    public void deleteByUsername(String username) {
         Teacher teacher = teacherRepository.findTeacherByUsername(username);
-        if(teacher == null){
+        if (teacher == null) {
             throw new TeacherUsernameException("This teacher does not exist");
         }
         teacherRepository.delete(teacher);

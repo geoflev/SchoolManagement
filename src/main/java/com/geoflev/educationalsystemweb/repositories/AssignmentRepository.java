@@ -4,7 +4,7 @@ import com.geoflev.educationalsystemweb.entities.Assignment;
 import com.geoflev.educationalsystemweb.entities.Course;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AssignmentRepository extends CrudRepository<Assignment,Long> {
+public interface AssignmentRepository extends CrudRepository<Assignment, Long> {
 
     Assignment findByAssignmentId(Long findByAssignmentId);
 

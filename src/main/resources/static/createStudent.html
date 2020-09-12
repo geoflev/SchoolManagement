@@ -17,51 +17,54 @@
         <div class="form-group border rounded p-3">
 
             <label for="username">Username</label>
-            <input  type="text" class="form-control mt-2" id="username"
-                   placeholder="Username" name="username"  maxlength="50" required><br>
+            <input type="text" class="form-control mt-2" id="username"
+                   placeholder="Username" name="username" maxlength="50" required><br>
 
             <label class="mt-2" for="firstName">First Name</label>
-            <input  type="text" class="form-control mt-2" id="firstName"
+            <input type="text" class="form-control mt-2" id="firstName"
                    placeholder="First Name" name="firstName" minlength="1" maxlength="50" required><br>
 
             <label class="mt-2" for="lastName">Last Name</label>
-            <input  type="text" class="form-control mt-2" id="lastName"
-                   placeholder="Last Name" name="lastName"  required><br>
+            <input type="text" class="form-control mt-2" id="lastName"
+                   placeholder="Last Name" name="lastName" required><br>
 
             <label class="mt-2" for="password">Password</label>
-            <input  type="text" class="form-control mt-2" id="password"
-                    placeholder="Password" name="password" min="1" required><br>
+            <input type="text" class="form-control mt-2" id="password"
+                   placeholder="Password" name="password" min="1" required><br>
 
             <label class="mt-2" for="role">Role</label>
-            <input  type="text" class="form-control mt-2" id="role"
-                    placeholder="Role" name="role" min="2" required><br>
+            <input type="text" class="form-control mt-2" id="role"
+                   placeholder="Role" name="role" min="2" required><br>
 
             <label class="mt-2" for="interests">Interests</label>
             <br>
-            <textarea rows = "5" cols = "60" name = "interests" id="interests" placeholder="Enter interests here...Separated by comma (,)">
+            <textarea rows="5" cols="60" name="interests" id="interests"
+                      placeholder="Enter interests here...Separated by comma (,)">
             </textarea><br>
 
             <label class="mt-2" for="birthDate">Birth Date</label>
             <input type="date" class="form-control" id="birthDate"
-                   placeholder="Birth Date" name="birthDate" ><br>
+                   placeholder="Birth Date" name="birthDate"><br>
 
             <label class="mt-2" for="home">Home Address</label>
-            <input  type="text" class="form-control mt-2" id="home"
-                    placeholder="Home Address" name="home" min="2" ><br>
+            <input type="text" class="form-control mt-2" id="home"
+                   placeholder="Home Address" name="home" min="2"><br>
 
             <label class="mt-2" for="profilePicture">Profile Picture</label>
             <input type="file" accept="image/*" capture class="form-control" id="profilePicture"
-                   placeholder="Profile Picture" name="profilePicture" min="1" ><br>
+                   placeholder="Profile Picture" name="profilePicture" min="1"><br>
         </div>
     </form>
     <div class="text-center">
-        <button onclick="clickyClick();" type="submit" value="Submit" id="submit" class="btn" form="studentForm">Create Student</button>
+        <button onclick="clickyClick();" type="submit" value="Submit" id="submit" class="btn" form="studentForm">Create
+            Student
+        </button>
     </div>
 </div>
 </body>
 </html>
 <script>
     function clickyClick() {
-       document.getElementById("interests").value.split(",");
+        document.getElementById("interests").value.split(",");
     }
 </script>

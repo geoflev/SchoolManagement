@@ -22,10 +22,10 @@ public class AssignmentController {
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewAssignment(@Valid Assignment assignment, BindingResult result){
+    public ResponseEntity<?> createNewAssignment(@Valid Assignment assignment, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if(errorMap != null){
+        if (errorMap != null) {
             return errorMap;
         }
         Assignment newAssignment = assignmentService.saveOrUpdateAssignment(assignment);
@@ -33,18 +33,18 @@ public class AssignmentController {
     }
 
     @GetMapping("/{assignmentCode}")
-    public ResponseEntity<?> getAssignmentByCode(@PathVariable String assignmentCode){
+    public ResponseEntity<?> getAssignmentByCode(@PathVariable String assignmentCode) {
         Assignment assignment = assignmentService.findByCode(assignmentCode);
-        return new ResponseEntity<Assignment>(assignment,HttpStatus.OK);
+        return new ResponseEntity<Assignment>(assignment, HttpStatus.OK);
     }
 
     @GetMapping("/all")
-    public Iterable<Assignment> getAllAssignments(){
+    public Iterable<Assignment> getAllAssignments() {
         return assignmentService.findAllAssignments();
     }
 
     @DeleteMapping("/{assignmentCode}")
-    public ResponseEntity<?> deleteAssignmentByCode(@PathVariable String assignmentCode){
+    public ResponseEntity<?> deleteAssignmentByCode(@PathVariable String assignmentCode) {
         assignmentService.deleteAssignmentByCode(assignmentCode);
         return new ResponseEntity<String>("Assignement deleted successfully", HttpStatus.OK);
     }

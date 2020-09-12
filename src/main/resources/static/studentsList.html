@@ -6,7 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
 </head>
 <body>
@@ -23,69 +24,33 @@
         <th>Birth Date</th>
         <th>Home</th>
         <th>Profile Picture</th>
-        <th>Action</th>
     </tr>
     </thead>
     <tbody>
     </tbody>
 </table>
 <br>
-    <button onclick="window.location.href='/createStudent.html'">Create Student</button>
+<button onclick="window.location.href='/createStudent.html'">Create Student</button>
 </body>
 </html>
 <script>
-    $(document).ready( function () {
-        $('#studTable').DataTable();
-    } );
-</script>
-<script>
-    $(document).ready( function () {
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:8080/student/all',
-            data: $('#details').serialize(),
-            dataType:"json", //to parse string into JSON object,
-            success: function(data){
-                if(data){
-                    var len = data.length;
-                    var txt = "";
-                    if(len > 0){
-                        for(var i=0;i<len;i++){
-                            if(data[i].username && data[i].firstName){
-                                txt += "<tr>" +
-                                            "<td>"+data[i].username+"</td>" +
-                                            "<td>"+data[i].firstName+"</td>" +
-                                            "<td>"+data[i].lastName+"</td>" +
-                                            "<td>"+data[i].password+"</td>" +
-                                            "<td>"+data[i].role+"</td>" +
-                                            "<td>"+data[i].interests+"</td>" +
-                                            "<td>"+data[i].birthDate+"</td>" +
-                                            "<td>"+data[i].home+"</td>" +
-                                            "<td>"+data[i].profilePicture+"</td>" +
-                                            "<td><button id='delete''>Delete</button></td>" +
-                                        "</tr>";
-                            }
-                        }
-                        if(txt != ""){
-                            $("#studTable").append(txt).removeClass("hidden");
-                        }
-                    }
-                }
+    $(document).ready(function () {
+        $('#studTable').DataTable({
+            "ajax": {
+                "url": "http://localhost:8080/student/all",
+                "dataSrc": ""
             },
-            error: function(jqXHR, textStatus, errorThrown){
-                alert('error: ' + textStatus + ': ' + errorThrown);
-            }
-        });
-        return false;//suppress natural form submission
-    });
-</script>
-<script>
-    $('#delete').click(function(){
-        $.ajax({
-            url: 'http://localhost:8080/student/'+ data[i].username,
-            type: 'DELETE',
-            contentType:'application/json',
-            dataType: 'text',
+            "columns": [
+                {"data": "username"},
+                {"data": "firstName"},
+                {"data": "lastName"},
+                {"data": "password"},
+                {"data": "role"},
+                {"data": "interests"},
+                {"data": "birthDate"},
+                {"data": "home"},
+                {"data": "profilePicture"}
+            ]
         });
     });
 </script>

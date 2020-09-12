@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 
-public class CourseCodeException extends RuntimeException{
+public class CourseCodeException extends RuntimeException {
 
-    public CourseCodeException(String message){
+    public CourseCodeException(String message) {
         super(message);
     }
 }

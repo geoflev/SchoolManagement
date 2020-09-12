@@ -34,12 +34,12 @@ public class Assignment {
 
 
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.dateTimePosted = LocalDateTime.now();
     }
 
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
         this.dateTimePosted = LocalDateTime.now();
     }
 
